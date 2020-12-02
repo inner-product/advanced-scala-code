@@ -4,7 +4,7 @@ import cats.effect._
 
 object Retry {
   /**
-   * Given an IO[A] construct an IO[A] that, on failure of the original IO,
+   * Given an IO[A] construct and an IO[A] that, on failure of the original IO,
    * will retry it at most count number of times. Count is a natural number.
    * 
    * Note: you *must not* call any unsafe methods within this method.
