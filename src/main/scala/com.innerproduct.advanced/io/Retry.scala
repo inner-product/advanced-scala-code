@@ -31,10 +31,10 @@ object Retry {
    * Tasks is a list of tasks to execute.
    * Retries is the number of retry attempts for each task before it is considered failed.
    */
-  def taskManager1[A](tasks: List[IO[A]], retries: Int): (List[A], List[Throwable]) =
+  def taskManager1[A](tasks: List[IO[A]], retries: Int): (List[Throwable], List[A]) =
     ???
 
   /** As above but notice the difference in result type and adapt accordingly. */
-  def taskManager2[A](tasks: List[IO[A]], retries: Int): IO[(List[A], List[Throwable])] =
+  def taskManager2[A](tasks: List[IO[A]], retries: Int): IO[(List[Throwable], List[A])] =
     ???
 }
