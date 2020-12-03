@@ -12,5 +12,6 @@ object Blocking extends IOApp {
     for {
       _ <- IO("on default").debug
       _ <- IO("on blocker").debug // <2>
+      _ <- IO("where am I?").debug
     } yield ()
 }
