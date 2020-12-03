@@ -17,7 +17,7 @@ object RetryF extends IOApp {
    */
   val program: IO[Unit] =
     for {
-      tasks <- taskSource.tasks(20)
+      tasks <- IO.pure(taskSource.tasks(20))
       results <- manager.manage(tasks)
       (failures, successes) = results
       // TODO: report on the results
@@ -28,8 +28,11 @@ object RetryF extends IOApp {
 }
 
 trait TaskSource[F[_]] {
+  def create: F[Int]
+
   /** Given a natural number create a list of tasks that may fail. */
-  def tasks(n: Int): F[List[F[Int]]]
+  def tasks(n: Int): List[F[Int]] =
+    List.fill(n)(create)
 }
 
 object TaskSource {
